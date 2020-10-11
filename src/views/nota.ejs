@@ -10,6 +10,8 @@
             <div class="card text-white bg-dark mt-5" style="max-width: 20rem;">
                 <div class="card-header">Actividad</div>
                 <div class="card-body">
+                    <!-- Se comprueba el estado de la nota 0= no realizada 1= nota realizada 
+                        en caso de que  esté realizada se aplica una decoración que subraya lo realizado...-->
                     <% if(notas.hecho == 0){ 
                         %>
                     <h4 class="card-title"><%= notas.titulo %></h4>
@@ -25,7 +27,8 @@
             <div class="col-md-12">
                 <div class="row">
                     <form action="/listo/<%= notas.id %>" method="UPDATE">
-
+                        <!-- Se comprueba el estado de la nota 0= no realizada 1= nota realizada 
+                        en caso de que esté realizada se deshabilita el botón "Listo"-->
                         <% if(notas.hecho == 0){ 
                             %>
                         <button type="submit" class="btn btn-primary">Listo</button>
@@ -44,42 +47,7 @@
     })
        }
 %>
-    </div>
+  <%- include('partials/_formularioNota.ejs') %>
 
-    <div class="container mt-5">
-        <form action="/add" method="POST">
-            <legend>Añadir nota</legend>
-            <label for="titulo" class="col-sm-2 col-form-label">Título</label>
-            <input type="text" class="form-control-plaintext" name="titulo" id="titulo">
-            <label for="descripcion">Descripción</label>
-            <textarea class="form-control" id="descripcion" name="descripcion" rows="3"></textarea>
-            <button type="submit" class="btn btn-primary">Añadir nota</button>
-        </form>
-    </div>
-</div>
-
-<!-- Trigger the modal with a button -->
-<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
-
-<!-- Modal -->
-<div id="myModal" class="modal fade" role="dialog">
-  <div class="modal-dialog">
-
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Modal Header</h4>
-      </div>
-      <div class="modal-body">
-        <p>Some text in the modal.</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-
-  </div>
-</div>
 
 <%- include('partials/_footer.ejs') %>
