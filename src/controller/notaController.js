@@ -1,5 +1,6 @@
 const controller = {};
 
+//Método para traer notas.
 controller.list =  (req,res)=>{
 
     req.getConnection((err, conn)=>{
@@ -13,7 +14,7 @@ controller.list =  (req,res)=>{
    
 };
 
-
+//Método para añadir notas
 controller.add = (req, res)=>{
     const notas = req.body;
 
@@ -27,7 +28,7 @@ controller.add = (req, res)=>{
     });
 
 };
-
+//Método para eliminar una nota
 controller.delete = (req,res) =>{
     req.getConnection((err,conn)=>{
         const query = 'DELETE FROM notas WHERE id= ?';
@@ -38,6 +39,7 @@ controller.delete = (req,res) =>{
     })
 };
 
+//Método para actualizar el estado a una nota a realizado
 controller.done = (req,res) =>{
     req.getConnection((err,conn)=>{
         const query = 'UPDATE notas SET hecho=1 WHERE id=?';
